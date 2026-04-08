@@ -37,13 +37,34 @@
 		class: extraClass = '',
 		children
 	}: Props = $props();
+
+	// Minimize animation state
+	let animating = $state<'minimize' | 'restore' | null>(null);
+	let wasMinimized = $state(minimized);
+
+	$effect(() => {
+		if (minimized && !wasMinimized) {
+			// Going minimized — play shrink animation then hide
+			animating = 'minimize';
+			setTimeout(() => { animating = null; }, 200);
+		} else if (!minimized && wasMinimized) {
+			// Restoring — play grow animation
+			animating = 'restore';
+			setTimeout(() => { animating = null; }, 200);
+		}
+		wasMinimized = minimized;
+	});
+
+	let shouldRender = $derived(!minimized || animating === 'minimize');
 </script>
 
-{#if !minimized}
+{#if shouldRender}
 	<div
 		class="xp-window {extraClass}"
 		class:active
 		class:maximized
+		class:minimizing={animating === 'minimize'}
+		class:restoring={animating === 'restore'}
 		class:win98={theme.version === 'win98'}
 		class:xp={theme.version === 'xp'}
 		class:vista={theme.version === 'vista'}
@@ -87,6 +108,28 @@
 		flex-direction: column;
 		overflow: visible;
 		border: var(--win-border, 3px solid #0054e3);
+		transform-origin: bottom left;
+	}
+
+	/* Minimize animation: shrink toward taskbar */
+	.minimizing {
+		animation: minimizeAnim 0.2s ease-in forwards;
+		pointer-events: none;
+	}
+
+	/* Restore animation: grow from taskbar */
+	.restoring {
+		animation: restoreAnim 0.2s ease-out forwards;
+	}
+
+	@keyframes minimizeAnim {
+		0% { transform: scale(1); opacity: 1; }
+		100% { transform: scale(0.1) translateY(100vh); opacity: 0; }
+	}
+
+	@keyframes restoreAnim {
+		0% { transform: scale(0.1) translateY(100vh); opacity: 0; }
+		100% { transform: scale(1); opacity: 1; }
 	}
 
 	.xp-window.maximized {

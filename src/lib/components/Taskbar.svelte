@@ -11,6 +11,11 @@
 	let { tray }: Props = $props();
 
 	let clock = $state('');
+	let dateString = $state('');
+	let showCalendar = $state(false);
+
+	const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	$effect(() => {
 		function tick() {
@@ -20,12 +25,15 @@
 			const ampm = h >= 12 ? 'PM' : 'AM';
 			h = h % 12 || 12;
 			clock = `${h}:${m} ${ampm}`;
+			dateString = `${DAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
 		}
 		tick();
 		const id = setInterval(tick, 1000);
 		return () => clearInterval(id);
 	});
 </script>
+
+<svelte:window onclick={() => { showCalendar = false; }} />
 
 <div
 	class="taskbar"
@@ -72,7 +80,15 @@
 		{#if tray}
 			{@render tray()}
 		{/if}
-		<span class="clock">{clock}</span>
+		<button class="clock" title={dateString} onclick={(e: MouseEvent) => { e.stopPropagation(); showCalendar = !showCalendar; }}>
+			{clock}
+		</button>
+		{#if showCalendar}
+			<div class="calendar-popup" onclick={(e: MouseEvent) => e.stopPropagation()}>
+				<div class="cal-header">{dateString}</div>
+				<div class="cal-time">{clock}</div>
+			</div>
+		{/if}
 	</div>
 </div>
 
@@ -306,6 +322,47 @@
 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 		min-width: 55px;
 		text-align: center;
+		background: transparent;
+		border: none;
+		color: inherit;
+		font-family: inherit;
+		cursor: pointer;
+		padding: 1px 4px;
+		border-radius: 2px;
+	}
+
+	.clock:hover {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.calendar-popup {
+		position: absolute;
+		bottom: 100%;
+		right: 0;
+		background: #ece9d8;
+		border: 1px solid #888;
+		box-shadow: 2px -2px 6px rgba(0, 0, 0, 0.25);
+		padding: 12px 16px;
+		z-index: 10001;
+		margin-bottom: 2px;
+		border-radius: 3px;
+		text-align: center;
+		min-width: 180px;
+	}
+
+	.cal-header {
+		font-size: 11px;
+		font-weight: bold;
+		color: #000;
+		font-family: Tahoma, sans-serif;
+		margin-bottom: 4px;
+	}
+
+	.cal-time {
+		font-size: 20px;
+		font-weight: bold;
+		color: #000;
+		font-family: Tahoma, sans-serif;
 	}
 
 	/* Win98 system tray: inset recessed */

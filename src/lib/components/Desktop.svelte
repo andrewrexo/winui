@@ -56,6 +56,43 @@
 
 	const wallpaperStyle = $derived(THEME_CONFIGS[theme.version].wallpaperCSS);
 
+	// ===== Drag Selection Rectangle =====
+	let selecting = $state(false);
+	let selStartX = $state(0);
+	let selStartY = $state(0);
+	let selCurX = $state(0);
+	let selCurY = $state(0);
+
+	function handleDesktopMouseDown(e: MouseEvent) {
+		// Only start selection on direct desktop-surface click (not on icons/windows)
+		const target = e.target as HTMLElement;
+		if (!target.classList.contains('desktop-surface') && !target.classList.contains('icon-grid')) return;
+		selecting = true;
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		selStartX = e.clientX - rect.left;
+		selStartY = e.clientY - rect.top;
+		selCurX = selStartX;
+		selCurY = selStartY;
+	}
+
+	function handleDesktopMouseMove(e: MouseEvent) {
+		if (!selecting) return;
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		selCurX = e.clientX - rect.left;
+		selCurY = e.clientY - rect.top;
+	}
+
+	function handleDesktopMouseUp() {
+		selecting = false;
+	}
+
+	let selRect = $derived({
+		left: Math.min(selStartX, selCurX),
+		top: Math.min(selStartY, selCurY),
+		width: Math.abs(selCurX - selStartX),
+		height: Math.abs(selCurY - selStartY)
+	});
+
 	// ===== Alt+Tab Switcher =====
 	let altTabOpen = $state(false);
 	let altTabIndex = $state(0);
@@ -132,6 +169,9 @@
 		aria-label="Desktop"
 		onclick={handleDesktopClick}
 		oncontextmenu={handleContextMenu}
+		onmousedown={handleDesktopMouseDown}
+		onmousemove={handleDesktopMouseMove}
+		onmouseup={handleDesktopMouseUp}
 	>
 		{#if icons}
 			<div class="icon-grid">
@@ -164,6 +204,14 @@
 				y={desktop.contextMenu.y}
 				onclose={() => desktop.hideContextMenu()}
 			/>
+		{/if}
+
+		<!-- Drag Selection Rectangle -->
+		{#if selecting && selRect.width > 3 && selRect.height > 3}
+			<div
+				class="selection-rect"
+				style="left:{selRect.left}px;top:{selRect.top}px;width:{selRect.width}px;height:{selRect.height}px;"
+			></div>
 		{/if}
 
 		<!-- Alt+Tab Switcher Overlay -->
@@ -224,6 +272,15 @@
 	::selection {
 		background: var(--selection-bg, #316ac5);
 		color: var(--selection-color, #fff);
+	}
+
+	/* ===== Selection Rectangle ===== */
+	.selection-rect {
+		position: absolute;
+		border: 1px solid var(--selection-bg, #316ac5);
+		background: rgba(49, 106, 197, 0.15);
+		pointer-events: none;
+		z-index: 5;
 	}
 
 	/* ===== Alt+Tab Overlay ===== */

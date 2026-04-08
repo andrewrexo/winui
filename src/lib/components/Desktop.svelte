@@ -104,6 +104,9 @@
 	let altTabOpen = $state(false);
 	let altTabIndex = $state(0);
 
+	// Track whether Meta was pressed alone (no combo key)
+	let metaPressedAlone = false;
+
 	function handleKeyDown(e: KeyboardEvent) {
 		// Alt+F4: close active window
 		if (e.altKey && e.key === 'F4') {
@@ -112,11 +115,15 @@
 			return;
 		}
 
-		// Meta/Win key: toggle start menu
+		// Track Meta/Win key — only toggle start menu if released without combo
 		if (e.key === 'Meta' || e.key === 'OS') {
-			e.preventDefault();
-			taskbar.toggleStartMenu();
+			metaPressedAlone = true;
 			return;
+		}
+
+		// Any other key while Meta is held = combo, not standalone Meta
+		if (e.metaKey) {
+			metaPressedAlone = false;
 		}
 
 		// Escape: close start menu / context menu / alt-tab
@@ -145,6 +152,7 @@
 		// Win+D: show desktop (minimize all)
 		if (e.metaKey && e.key === 'd') {
 			e.preventDefault();
+			metaPressedAlone = false;
 			for (const win of wm.windows) {
 				win.minimized = true;
 			}
@@ -154,6 +162,13 @@
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
+		// Meta released alone (no combo) → toggle start menu
+		if ((e.key === 'Meta' || e.key === 'OS') && metaPressedAlone) {
+			taskbar.toggleStartMenu();
+			metaPressedAlone = false;
+			return;
+		}
+
 		// When Alt is released while alt-tab is open, switch to selected window
 		if (altTabOpen && (e.key === 'Alt' || !e.altKey)) {
 			const target = wm.windows[altTabIndex];

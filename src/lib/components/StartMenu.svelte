@@ -28,17 +28,52 @@
 		footer
 	}: Props = $props();
 
-	let openSubmenu = $state<string | null>(null);
+	let openSubmenus = $state<Set<string>>(new Set());
+	let submenuCloseTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 	function handleItemClick(item: StartMenuItem) {
 		if (item.children && item.children.length > 0) return;
 		item.action?.();
-		openSubmenu = null;
+		openSubmenus = new Set();
 		taskbar.closeStartMenu();
 	}
 
-	function handleItemHover(item: StartMenuItem) {
-		openSubmenu = item.children ? item.label : null;
+	function handleItemHover(item: StartMenuItem, siblings: StartMenuItem[]) {
+		// Clear any pending close timers for this item
+		for (const [key, timer] of submenuCloseTimers) {
+			clearTimeout(timer);
+			submenuCloseTimers.delete(key);
+		}
+
+		// Close sibling submenus (other items at same level)
+		const siblingLabels = siblings.filter(s => s.children && s.label !== item.label).map(s => s.label);
+		const next = new Set(openSubmenus);
+		for (const label of siblingLabels) {
+			next.delete(label);
+		}
+
+		if (item.children) {
+			next.add(item.label);
+			openSubmenus = next;
+		} else {
+			// Delay closing so diagonal mouse movement to submenu works
+			const timer = setTimeout(() => {
+				for (const label of siblingLabels) {
+					openSubmenus.delete(label);
+				}
+				openSubmenus = new Set(openSubmenus);
+			}, 300);
+			submenuCloseTimers.set(item.label, timer);
+			openSubmenus = next;
+		}
+	}
+
+	function handleSubmenuEnter() {
+		// Mouse entered a submenu flyout — cancel all pending close timers
+		for (const [key, timer] of submenuCloseTimers) {
+			clearTimeout(timer);
+		}
+		submenuCloseTimers.clear();
 	}
 </script>
 
@@ -47,16 +82,16 @@
 		const target = e.target as HTMLElement;
 		if (!target.closest('.start-menu') && !target.closest('.start-button')) {
 			taskbar.closeStartMenu();
-			openSubmenu = null;
+			openSubmenus = new Set();
 		}
 	}}
 />
 
-{#snippet menuItem(item: StartMenuItem)}
+{#snippet menuItem(item: StartMenuItem, siblings: StartMenuItem[])}
 	{#if item.separator}
 		<div class="start-separator"></div>
 	{:else}
-		<div class="sm-item-wrapper" onmouseenter={() => handleItemHover(item)}>
+		<div class="sm-item-wrapper" onmouseenter={() => handleItemHover(item, siblings)}>
 			<button
 				class="start-menu-item"
 				role="menuitem"
@@ -68,10 +103,11 @@
 					<span class="sm-arrow">▸</span>
 				{/if}
 			</button>
-			{#if item.children && openSubmenu === item.label}
-				<div class="sm-submenu">
+			{#if item.children && openSubmenus.has(item.label)}
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div class="sm-submenu" onmouseenter={handleSubmenuEnter}>
 					{#each item.children as child}
-						{@render menuItem(child)}
+						{@render menuItem(child, item.children)}
 					{/each}
 				</div>
 			{/if}
@@ -94,11 +130,11 @@
 				</div>
 				<div class="win98-items">
 					{#each leftItems as item}
-						{@render menuItem(item)}
+						{@render menuItem(item, leftItems)}
 					{/each}
 					<div class="start-separator"></div>
 					{#each rightItems as item}
-						{@render menuItem(item)}
+						{@render menuItem(item, rightItems)}
 					{/each}
 				</div>
 			</div>
@@ -115,12 +151,12 @@
 			<div class="start-menu-body">
 				<div class="start-menu-left">
 					{#each leftItems as item}
-						{@render menuItem(item)}
+						{@render menuItem(item, leftItems)}
 					{/each}
 				</div>
 				<div class="start-menu-right">
 					{#each rightItems as item}
-						{@render menuItem(item)}
+						{@render menuItem(item, rightItems)}
 					{/each}
 				</div>
 			</div>

@@ -1,0 +1,165 @@
+/* Windows 98 — Exact replica */
+:root[data-theme='win98'] {
+	/* Title Bar — HORIZONTAL gradient (L to R), defining 98 look */
+	--win-titlebar-active: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+	--win-titlebar-inactive: linear-gradient(90deg, #808080 0%, #b5b5b5 100%);
+	--win-titlebar-height: 18px;
+	--win-titlebar-radius: 0px;
+	--win-titlebar-font-size: 11px;
+	--win-titlebar-text-shadow: none;
+	--win-titlebar-padding: 0 2px 0 3px;
+
+	/* Window — Classic 3D raised border */
+	--win-border: none;
+	--win-border-color: none;
+	--win-radius: 0px;
+	--win-shadow: 1px 1px 0 #000;
+	--win-face: #c0c0c0;
+	--win-content-bg: white;
+	--win-content-border: 2px inset #bbb;
+	--win-outer-border-style: outset;
+	/* 3D border simulation: light top-left, dark bottom-right */
+	--win-border-top: 2px solid #dfdfdf;
+	--win-border-left: 2px solid #dfdfdf;
+	--win-border-bottom: 2px solid #404040;
+	--win-border-right: 2px solid #404040;
+	--win-inner-border-top: 1px solid #fff;
+	--win-inner-border-left: 1px solid #fff;
+	--win-inner-border-bottom: 1px solid #808080;
+	--win-inner-border-right: 1px solid #808080;
+
+	/* Window Controls — Small flat gray 3D buttons, ALL same color (no red close) */
+	--win-ctrl-size: 16px;
+	--win-ctrl-bg: #c0c0c0;
+	--win-ctrl-border: none;
+	--win-ctrl-radius: 0px;
+	--win-ctrl-font-size: 9px;
+	--win-ctrl-color: #000;
+	--win-ctrl-close-bg: #c0c0c0;
+	--win-ctrl-hover-bg: #d4d0c8;
+	--win-ctrl-gap: 0px;
+	--win-ctrl-close-gap: 2px;
+	/* 3D raised look for buttons */
+	--win-ctrl-border-top: 1px solid #fff;
+	--win-ctrl-border-left: 1px solid #fff;
+	--win-ctrl-border-bottom: 1px solid #404040;
+	--win-ctrl-border-right: 1px solid #404040;
+	--win-ctrl-active-border-top: 1px solid #404040;
+	--win-ctrl-active-border-left: 1px solid #404040;
+	--win-ctrl-active-border-bottom: 1px solid #fff;
+	--win-ctrl-active-border-right: 1px solid #fff;
+
+	/* Taskbar — Flat gray with 3D top edge */
+	--taskbar-bg: #c0c0c0;
+	--taskbar-border-top: 2px solid #dfdfdf;
+	--taskbar-height: 28px;
+	--taskbar-shadow: none;
+
+	/* Start Button — Gray 3D raised, "Start" text */
+	--start-bg: #c0c0c0;
+	--start-border: none;
+	--start-radius: 0px;
+	--start-color: #000;
+	--start-font-weight: bold;
+	--start-font-size: 11px;
+	--start-hover-bg: #c0c0c0;
+	--start-active-bg: #c0c0c0;
+	--start-shadow: none;
+	--start-text-shadow: none;
+	--start-padding: 0 6px 0 3px;
+	/* 3D border */
+	--start-border-top: 1px solid #fff;
+	--start-border-left: 1px solid #fff;
+	--start-border-bottom: 1px solid #404040;
+	--start-border-right: 1px solid #404040;
+	--start-active-border-top: 1px solid #404040;
+	--start-active-border-left: 1px solid #404040;
+	--start-active-border-bottom: 1px solid #fff;
+	--start-active-border-right: 1px solid #fff;
+
+	/* Taskbar Items — Gray 3D raised, active is inset */
+	--taskbar-item-bg: #c0c0c0;
+	--taskbar-item-border: none;
+	--taskbar-item-radius: 0px;
+	--taskbar-item-color: #000;
+	--taskbar-item-active-bg: #c0c0c0;
+	--taskbar-item-active-border: none;
+	/* 3D borders */
+	--taskbar-item-border-top: 1px solid #fff;
+	--taskbar-item-border-left: 1px solid #fff;
+	--taskbar-item-border-bottom: 1px solid #404040;
+	--taskbar-item-border-right: 1px solid #404040;
+	--taskbar-item-active-border-top: 1px solid #404040;
+	--taskbar-item-active-border-left: 1px solid #404040;
+	--taskbar-item-active-border-bottom: 1px solid #fff;
+	--taskbar-item-active-border-right: 1px solid #fff;
+
+	/* System Tray — Inset recessed area */
+	--tray-bg: #c0c0c0;
+	--tray-border: none;
+	--tray-color: #000;
+	--tray-border-top: 1px solid #808080;
+	--tray-border-left: 1px solid #808080;
+	--tray-border-bottom: 1px solid #fff;
+	--tray-border-right: 1px solid #fff;
+
+	/* Start Menu — Gray with vertical sidebar */
+	--startmenu-bg: #c0c0c0;
+	--startmenu-border: none;
+	--startmenu-radius: 0px;
+	--startmenu-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+	--startmenu-header-bg: #000080;
+	--startmenu-header-color: #fff;
+	--startmenu-item-hover-bg: #000080;
+	--startmenu-item-hover-color: #fff;
+	--startmenu-separator: #808080;
+	--startmenu-sidebar-width: 22px;
+	/* 3D border */
+	--startmenu-border-top: 2px solid #dfdfdf;
+	--startmenu-border-left: 2px solid #dfdfdf;
+	--startmenu-border-bottom: 2px solid #404040;
+	--startmenu-border-right: 2px solid #404040;
+
+	/* Buttons */
+	--btn-bg: #c0c0c0;
+	--btn-border: none;
+	--btn-radius: 0px;
+	--btn-color: #000;
+	--btn-hover-bg: #c0c0c0;
+	--btn-active-bg: #c0c0c0;
+	--btn-active-border: none;
+	--btn-font-size: 11px;
+
+	/* Inputs */
+	--input-bg: #fff;
+	--input-border: 2px inset #bbb;
+	--input-radius: 0px;
+	--input-color: #000;
+
+	/* General */
+	--selection-bg: #000080;
+	--selection-color: #fff;
+	--font-family: 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif;
+	--font-size: 11px;
+	--scrollbar-track: #c0c0c0;
+	--scrollbar-thumb: #c0c0c0;
+	--scrollbar-border: 1px outset #dfdfdf;
+
+	/* Context Menu */
+	--ctx-bg: #c0c0c0;
+	--ctx-border: none;
+	--ctx-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+	--ctx-hover-bg: #000080;
+	--ctx-hover-color: #fff;
+	--ctx-separator: #808080;
+	--ctx-border-top: 2px solid #dfdfdf;
+	--ctx-border-left: 2px solid #dfdfdf;
+	--ctx-border-bottom: 2px solid #404040;
+	--ctx-border-right: 2px solid #404040;
+
+	/* Progress Bar */
+	--progress-bg: #c0c0c0;
+	--progress-border: 2px inset #bbb;
+	--progress-fill: #000080;
+	--progress-radius: 0px;
+}

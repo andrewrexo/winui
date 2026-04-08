@@ -1,0 +1,210 @@
+/* Windows XP Luna Blue — Exact replica */
+:root[data-theme='xp'] {
+	/* Title Bar — Vertical gradient, iconic XP blue glow */
+	--win-titlebar-active: linear-gradient(
+		180deg,
+		#0997ff 0%,
+		#0053ee 3%,
+		#0050ea 8%,
+		#0153e4 18%,
+		#0554de 28%,
+		#0856d7 38%,
+		#0d5ccc 48%,
+		#1562c1 54%,
+		#1d6ab6 60%,
+		#2874ab 68%,
+		#3482a0 74%,
+		#4898e8 82%,
+		#59abf0 88%,
+		#73bdf4 94%,
+		#94d2f8 100%
+	);
+	--win-titlebar-inactive: linear-gradient(
+		180deg,
+		#7996df 0%,
+		#6882ca 10%,
+		#6177c0 30%,
+		#6d84cb 60%,
+		#7a94d8 80%,
+		#94b0e8 100%
+	);
+	--win-titlebar-height: 25px;
+	--win-titlebar-radius: 8px 8px 0 0;
+	--win-titlebar-font-size: 12px;
+	--win-titlebar-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	--win-titlebar-padding: 0 2px 0 4px;
+
+	/* Window — Blue 3px border, rounded top */
+	--win-border: 3px solid #0054e3;
+	--win-border-color: #0054e3;
+	--win-radius: 8px 8px 0 0;
+	--win-shadow: 2px 2px 8px rgba(0, 0, 0, 0.35);
+	--win-face: #ece9d8;
+	--win-content-bg: white;
+	--win-content-border: none;
+
+	/* Window Controls — Rounded colored buttons */
+	--win-ctrl-size: 21px;
+	--win-ctrl-bg: linear-gradient(
+		180deg,
+		#3e97f1 0%,
+		#1a6ee0 35%,
+		#0e5ad0 50%,
+		#1565d8 65%,
+		#3c8fff 100%
+	);
+	--win-ctrl-border: 1px solid rgba(0, 0, 0, 0.25);
+	--win-ctrl-radius: 3px;
+	--win-ctrl-font-size: 12px;
+	--win-ctrl-color: #fff;
+	--win-ctrl-close-bg: linear-gradient(
+		180deg,
+		#e8946a 0%,
+		#d45030 35%,
+		#c03018 50%,
+		#d04830 65%,
+		#e8886a 100%
+	);
+	--win-ctrl-hover-bg: linear-gradient(
+		180deg,
+		#5caaff 0%,
+		#3088f0 35%,
+		#2070e0 50%,
+		#3080e8 65%,
+		#5caeff 100%
+	);
+	--win-ctrl-gap: 2px;
+	--win-ctrl-close-gap: 2px;
+
+	/* Taskbar — Blue vertical gradient */
+	--taskbar-bg: linear-gradient(
+		180deg,
+		#3168d5 0%,
+		#2e62d0 2%,
+		#295bcc 5%,
+		#2456c8 10%,
+		#2153c4 30%,
+		#1e50c0 60%,
+		#1a4cbc 80%,
+		#1648b8 95%,
+		#1246b5 100%
+	);
+	--taskbar-border-top: 1px solid #5e8eec;
+	--taskbar-height: 30px;
+	--taskbar-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
+
+	/* Start Button — Green pill, rounded right side */
+	--start-bg: linear-gradient(
+		180deg,
+		#3fad3f 0%,
+		#38a238 8%,
+		#329a32 15%,
+		#2d922d 30%,
+		#288a28 50%,
+		#228222 70%,
+		#1e7a1e 85%,
+		#1a721a 100%
+	);
+	--start-border: none;
+	--start-radius: 0 8px 8px 0;
+	--start-color: #fff;
+	--start-font-weight: bold;
+	--start-font-size: 12px;
+	--start-hover-bg: linear-gradient(
+		180deg,
+		#4ec04e 0%,
+		#44b244 15%,
+		#3ca43c 30%,
+		#36993a 50%,
+		#2e8e2e 70%,
+		#288628 85%,
+		#1e7c1e 100%
+	);
+	--start-active-bg: linear-gradient(
+		180deg,
+		#2a882a 0%,
+		#247a24 15%,
+		#1e721e 50%,
+		#186a18 85%,
+		#125c12 100%
+	);
+	--start-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+	--start-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	--start-padding: 0 10px 0 4px;
+
+	/* Taskbar Items — Blue gradient, subtle border */
+	--taskbar-item-bg: linear-gradient(
+		180deg,
+		#3c89e8 0%,
+		#2b73d8 30%,
+		#2264c8 50%,
+		#1c5cb8 80%,
+		#1a58b4 100%
+	);
+	--taskbar-item-border: 1px solid rgba(0, 0, 0, 0.15);
+	--taskbar-item-radius: 3px;
+	--taskbar-item-color: #fff;
+	--taskbar-item-active-bg: linear-gradient(
+		180deg,
+		#1c55b5 0%,
+		#1e4daa 30%,
+		#18429e 60%,
+		#1c55b5 100%
+	);
+	--taskbar-item-active-border: 1px solid rgba(0, 0, 0, 0.25);
+
+	/* System Tray — Slightly lighter blue area */
+	--tray-bg: linear-gradient(180deg, #1690e8 0%, #1070d0 40%, #0c5fc0 100%);
+	--tray-border: none;
+	--tray-color: #fff;
+
+	/* Start Menu — Two-column, blue header, XP style */
+	--startmenu-bg: #ece9d8;
+	--startmenu-border: 2px solid #0054e3;
+	--startmenu-radius: 8px 8px 0 0;
+	--startmenu-shadow: 3px -3px 10px rgba(0, 0, 0, 0.35);
+	--startmenu-header-bg: linear-gradient(180deg, #1f63d1 0%, #1859c8 50%, #0a47b4 100%);
+	--startmenu-header-color: #fff;
+	--startmenu-item-hover-bg: #2b71b8;
+	--startmenu-item-hover-color: #fff;
+	--startmenu-separator: #d6d0c4;
+
+	/* Buttons — Classic XP raised style */
+	--btn-bg: #ece9d8;
+	--btn-border: 1px solid #aca899;
+	--btn-radius: 3px;
+	--btn-color: #000;
+	--btn-hover-bg: #f0ede4;
+	--btn-active-bg: #ddd8c8;
+	--btn-active-border: 1px solid #888;
+	--btn-font-size: 11px;
+
+	/* Inputs */
+	--input-bg: #fff;
+	--input-border: 1px solid #7f9db9;
+	--input-radius: 1px;
+	--input-color: #000;
+
+	/* General */
+	--selection-bg: #316ac5;
+	--selection-color: #fff;
+	--font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+	--font-size: 11px;
+	--scrollbar-track: #f1efe2;
+	--scrollbar-thumb: linear-gradient(90deg, #ece9d8 0%, #d8d4c4 100%);
+	--scrollbar-border: 1px solid #b0a890;
+
+	/* Context Menu */
+	--ctx-bg: #fff;
+	--ctx-border: 1px solid #888;
+	--ctx-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+	--ctx-hover-bg: #316ac5;
+	--ctx-hover-color: #fff;
+	--ctx-separator: #d6d0c4;
+
+	/* Progress Bar */
+	--progress-bg: #fff;
+	--progress-border: 1px solid #aca899;
+	--progress-fill: linear-gradient(180deg, #56b856 0%, #3c9e3c 100%);
+	--progress-radius: 2px;
+}

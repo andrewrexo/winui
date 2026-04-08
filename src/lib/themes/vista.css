@@ -1,0 +1,189 @@
+/* Windows Vista Aero — Exact replica */
+:root[data-theme='vista'] {
+	/* Title Bar — Frosted glass with blur */
+	--win-titlebar-active: linear-gradient(
+		180deg,
+		rgba(116, 150, 206, 0.85) 0%,
+		rgba(72, 112, 180, 0.7) 30%,
+		rgba(56, 92, 160, 0.65) 60%,
+		rgba(72, 112, 180, 0.7) 100%
+	);
+	--win-titlebar-inactive: linear-gradient(
+		180deg,
+		rgba(200, 206, 218, 0.72) 0%,
+		rgba(172, 180, 196, 0.6) 30%,
+		rgba(156, 164, 180, 0.55) 60%,
+		rgba(172, 180, 196, 0.6) 100%
+	);
+	--win-titlebar-height: 30px;
+	--win-titlebar-radius: 6px 6px 0 0;
+	--win-titlebar-font-size: 12px;
+	--win-titlebar-text-shadow: 0 0 6px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4);
+	--win-titlebar-padding: 0 4px 0 8px;
+
+	/* Window — Glass border with subtle glow */
+	--win-border: 1px solid rgba(60, 100, 170, 0.6);
+	--win-border-color: rgba(60, 100, 170, 0.6);
+	--win-radius: 6px 6px 0 0;
+	--win-shadow: 0 0 1px rgba(255, 255, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.35);
+	--win-face: rgba(235, 238, 245, 0.92);
+	--win-content-bg: #fff;
+	--win-content-border: none;
+
+	/* Window Controls — Rounded glass buttons */
+	--win-ctrl-size: 20px;
+	--win-ctrl-bg: linear-gradient(
+		180deg,
+		rgba(200, 215, 240, 0.5) 0%,
+		rgba(140, 170, 220, 0.4) 50%,
+		rgba(120, 150, 200, 0.35) 100%
+	);
+	--win-ctrl-border: 1px solid rgba(255, 255, 255, 0.35);
+	--win-ctrl-radius: 10px;
+	--win-ctrl-font-size: 10px;
+	--win-ctrl-color: #1e2d50;
+	--win-ctrl-close-bg: linear-gradient(
+		180deg,
+		rgba(232, 120, 90, 0.85) 0%,
+		rgba(210, 70, 45, 0.75) 50%,
+		rgba(190, 50, 30, 0.7) 100%
+	);
+	--win-ctrl-hover-bg: linear-gradient(
+		180deg,
+		rgba(220, 232, 255, 0.7) 0%,
+		rgba(180, 205, 250, 0.6) 50%,
+		rgba(160, 185, 240, 0.55) 100%
+	);
+	--win-ctrl-gap: 2px;
+	--win-ctrl-close-gap: 2px;
+
+	/* Taskbar — Dark glass with heavy blur */
+	--taskbar-bg: linear-gradient(
+		180deg,
+		rgba(50, 60, 85, 0.82) 0%,
+		rgba(28, 36, 58, 0.88) 30%,
+		rgba(18, 24, 42, 0.92) 70%,
+		rgba(12, 18, 34, 0.95) 100%
+	);
+	--taskbar-border-top: 1px solid rgba(120, 140, 180, 0.35);
+	--taskbar-height: 40px;
+	--taskbar-shadow: 0 -2px 6px rgba(0, 0, 0, 0.25);
+
+	/* Start Button — Circular glass orb */
+	--start-bg: radial-gradient(
+		circle at 50% 35%,
+		rgba(120, 200, 120, 0.95) 0%,
+		rgba(60, 140, 60, 0.9) 40%,
+		rgba(30, 100, 30, 0.85) 70%,
+		rgba(20, 70, 20, 0.9) 100%
+	);
+	--start-border: 1px solid rgba(255, 255, 255, 0.3);
+	--start-radius: 50%;
+	--start-color: #fff;
+	--start-font-weight: normal;
+	--start-font-size: 0px; /* Hide text — orb uses only the logo */
+	--start-hover-bg: radial-gradient(
+		circle at 50% 35%,
+		rgba(140, 220, 140, 1) 0%,
+		rgba(80, 165, 80, 0.95) 40%,
+		rgba(45, 120, 45, 0.9) 70%,
+		rgba(30, 85, 30, 0.95) 100%
+	);
+	--start-active-bg: radial-gradient(
+		circle at 50% 55%,
+		rgba(30, 100, 30, 0.95) 0%,
+		rgba(20, 75, 20, 0.9) 50%,
+		rgba(15, 55, 15, 0.85) 100%
+	);
+	--start-shadow: 0 0 12px rgba(90, 190, 90, 0.4), 0 0 4px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	--start-text-shadow: none;
+	--start-padding: 0;
+	--start-orb-size: 38px;
+
+	/* Taskbar Items — Subtle glass rectangles */
+	--taskbar-item-bg: linear-gradient(
+		180deg,
+		rgba(70, 90, 130, 0.35) 0%,
+		rgba(45, 60, 100, 0.3) 100%
+	);
+	--taskbar-item-border: 1px solid rgba(120, 140, 180, 0.15);
+	--taskbar-item-radius: 3px;
+	--taskbar-item-color: rgba(255, 255, 255, 0.95);
+	--taskbar-item-active-bg: linear-gradient(
+		180deg,
+		rgba(40, 55, 90, 0.6) 0%,
+		rgba(25, 38, 70, 0.55) 100%
+	);
+	--taskbar-item-active-border: 1px solid rgba(120, 140, 180, 0.25);
+
+	/* System Tray — Transparent, blends with taskbar */
+	--tray-bg: transparent;
+	--tray-border: none;
+	--tray-color: rgba(255, 255, 255, 0.92);
+
+	/* Start Menu — Glass with two columns and search */
+	--startmenu-bg: rgba(240, 242, 248, 0.96);
+	--startmenu-border: 1px solid rgba(60, 100, 170, 0.45);
+	--startmenu-radius: 6px 6px 0 0;
+	--startmenu-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+	--startmenu-header-bg: linear-gradient(
+		180deg,
+		rgba(60, 105, 185, 0.92) 0%,
+		rgba(40, 78, 155, 0.88) 100%
+	);
+	--startmenu-header-color: #fff;
+	--startmenu-item-hover-bg: rgba(65, 120, 200, 0.2);
+	--startmenu-item-hover-color: #000;
+	--startmenu-separator: rgba(0, 0, 0, 0.08);
+
+	/* Buttons — Subtle glass raised */
+	--btn-bg: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.85) 0%,
+		rgba(235, 238, 248, 0.75) 100%
+	);
+	--btn-border: 1px solid rgba(100, 130, 190, 0.35);
+	--btn-radius: 3px;
+	--btn-color: #1e2d50;
+	--btn-hover-bg: linear-gradient(
+		180deg,
+		rgba(210, 225, 255, 0.9) 0%,
+		rgba(190, 210, 245, 0.85) 100%
+	);
+	--btn-active-bg: rgba(170, 190, 230, 0.75);
+	--btn-active-border: 1px solid rgba(80, 110, 170, 0.45);
+	--btn-font-size: 12px;
+
+	/* Inputs */
+	--input-bg: rgba(255, 255, 255, 0.95);
+	--input-border: 1px solid rgba(80, 120, 180, 0.45);
+	--input-radius: 3px;
+	--input-color: #1e2d50;
+
+	/* General */
+	--selection-bg: rgba(65, 120, 200, 0.35);
+	--selection-color: #000;
+	--font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	--font-size: 12px;
+	--scrollbar-track: rgba(240, 242, 248, 0.5);
+	--scrollbar-thumb: rgba(140, 155, 185, 0.55);
+	--scrollbar-border: none;
+
+	/* Context Menu — Glass */
+	--ctx-bg: rgba(255, 255, 255, 0.96);
+	--ctx-border: 1px solid rgba(100, 130, 190, 0.25);
+	--ctx-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+	--ctx-hover-bg: rgba(65, 120, 200, 0.2);
+	--ctx-hover-color: #000;
+	--ctx-separator: rgba(0, 0, 0, 0.08);
+
+	/* Progress Bar */
+	--progress-bg: rgba(255, 255, 255, 0.5);
+	--progress-border: 1px solid rgba(100, 130, 190, 0.35);
+	--progress-fill: linear-gradient(
+		180deg,
+		rgba(80, 190, 80, 0.9) 0%,
+		rgba(55, 155, 55, 0.85) 100%
+	);
+	--progress-radius: 4px;
+}

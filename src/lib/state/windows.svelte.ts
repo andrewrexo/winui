@@ -88,6 +88,9 @@ class WindowManager {
 	activeId = $state<string | null>(null);
 	#zCounter = 100;
 
+	/** Optional hook called on window events: 'minimize' | 'maximize' | 'close' | 'open' */
+	onEvent?: (event: 'minimize' | 'maximize' | 'close' | 'open', id: string) => void;
+
 	/** All non-minimized windows, for rendering on the desktop */
 	get visibleWindows(): readonly WindowState[] {
 		return this.windows.filter((w) => !w.minimized);
@@ -133,12 +136,16 @@ class WindowManager {
 
 		this.windows.push(win);
 		this.activate(config.id);
+		this.onEvent?.('open', config.id);
 	}
 
 	/** Closes and removes a window */
 	close(id: string): void {
 		const idx = this.windows.findIndex((w) => w.id === id);
-		if (idx !== -1) this.windows.splice(idx, 1);
+		if (idx !== -1) {
+			this.windows.splice(idx, 1);
+			this.onEvent?.('close', id);
+		}
 		if (this.activeId === id) this.activeId = null;
 	}
 
@@ -158,13 +165,17 @@ class WindowManager {
 		if (win) {
 			win.minimized = true;
 			if (this.activeId === id) this.activeId = null;
+			this.onEvent?.('minimize', id);
 		}
 	}
 
 	/** Toggles a window between maximized and restored */
 	toggleMaximize(id: string): void {
 		const win = this.windows.find((w) => w.id === id);
-		if (win) win.maximized = !win.maximized;
+		if (win) {
+			win.maximized = !win.maximized;
+			this.onEvent?.('maximize', id);
+		}
 	}
 
 	/** Handles taskbar item click: restore, activate, or minimize */

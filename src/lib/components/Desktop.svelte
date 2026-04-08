@@ -17,6 +17,7 @@
 
 	interface Props {
 		themeVersion?: ThemeVersion;
+		wallpaperOverride?: string;
 		icons?: Snippet;
 		tray?: Snippet;
 		startMenuFooter?: Snippet;
@@ -29,6 +30,7 @@
 
 	let {
 		themeVersion = 'xp',
+		wallpaperOverride,
 		icons,
 		tray,
 		startMenuFooter,
@@ -44,7 +46,10 @@
 		]
 	}: Props = $props();
 
-	$effect(() => { theme.set(themeVersion); });
+	$effect(() => {
+		theme.set(themeVersion);
+		document.documentElement.dataset.theme = themeVersion;
+	});
 
 	function handleDesktopClick() {
 		desktop.clearSelection();
@@ -56,7 +61,7 @@
 		desktop.showContextMenu(e.clientX, e.clientY);
 	}
 
-	const wallpaperStyle = $derived(THEME_CONFIGS[theme.version].wallpaperCSS);
+	const wallpaperStyle = $derived(wallpaperOverride ?? THEME_CONFIGS[theme.version].wallpaperCSS);
 
 	// ===== Drag Selection Rectangle =====
 	let selecting = $state(false);

@@ -9,6 +9,9 @@ export { default as Button } from './components/Button.svelte';
 export { default as ContextMenu } from './components/ContextMenu.svelte';
 export { default as ProgressBar } from './components/ProgressBar.svelte';
 export { default as TextInput } from './components/TextInput.svelte';
+export { default as MenuBar } from './components/MenuBar.svelte';
+export { default as Toolbar } from './components/Toolbar.svelte';
+export { default as AddressBar } from './components/AddressBar.svelte';
 
 // State
 export { wm } from './state/windows.svelte.js';
@@ -27,3 +30,5 @@ export type { DesktopIconConfig } from './state/desktop.svelte.js';
 export type { DraggableOptions } from './actions/draggable.js';
 export type { ContextMenuItem } from './components/ContextMenu.svelte';
 export type { StartMenuItem } from './components/StartMenu.svelte';
+export type { MenuDef, MenuItemDef } from './components/MenuBar.svelte';
+export type { ToolbarButton, ToolbarGroup } from './components/Toolbar.svelte';

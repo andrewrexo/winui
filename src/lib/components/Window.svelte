@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import TitleBar from './TitleBar.svelte';
 	import { draggable } from '../actions/draggable.js';
+	import { resizable } from '../actions/resizable.js';
 	import { wm } from '../state/windows.svelte.js';
 	import { theme } from '../state/theme.svelte.js';
 
@@ -55,6 +56,10 @@
 			disabled: maximized,
 			onDragEnd: (nx, ny) => wm.move(id, nx, ny)
 		}}
+		use:resizable={{
+			disabled: maximized,
+			onResize: (nx, ny, nw, nh) => wm.resize(id, nx, ny, nw, nh)
+		}}
 	>
 		<TitleBar
 			{title}
@@ -80,7 +85,7 @@
 		min-height: 100px;
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
+		overflow: visible;
 		border: var(--win-border, 3px solid #0054e3);
 	}
 
@@ -99,29 +104,26 @@
 		border: var(--win-content-border, none);
 	}
 
-	/* === Win98: 3D outset border system === */
+	/* Win98: 3D outset border */
 	.win98 {
 		border: none;
 		border-top: var(--win-border-top, 2px solid #dfdfdf);
 		border-left: var(--win-border-left, 2px solid #dfdfdf);
 		border-bottom: var(--win-border-bottom, 2px solid #404040);
 		border-right: var(--win-border-right, 2px solid #404040);
-		/* Add inner light border */
 		outline: 1px solid #fff;
 		outline-offset: -3px;
 	}
 
-	.win98 .window-content {
-		margin: 2px;
-	}
+	.win98 .window-content { margin: 2px; }
 
-	/* === XP: Standard Luna styling === */
+	/* XP */
 	.xp {
 		border: 3px solid #0054e3;
-		border-top: none; /* title bar handles the top */
+		border-top: none;
 	}
 
-	/* === Vista: Glass border === */
+	/* Vista: Glass */
 	.vista {
 		backdrop-filter: blur(12px);
 		border: 1px solid rgba(60, 100, 170, 0.5);

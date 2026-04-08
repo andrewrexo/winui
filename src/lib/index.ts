@@ -21,6 +21,7 @@ export { desktop } from './state/desktop.svelte.js';
 
 // Actions
 export { draggable } from './actions/draggable.js';
+export { resizable } from './actions/resizable.js';
 
 // Types
 export type { ThemeVersion, ThemeConfig } from './themes/types.js';
@@ -28,6 +29,7 @@ export { THEME_CONFIGS } from './themes/types.js';
 export type { WindowState, WindowOpenConfig, TaskbarItemState } from './state/windows.svelte.js';
 export type { DesktopIconConfig } from './state/desktop.svelte.js';
 export type { DraggableOptions } from './actions/draggable.js';
+export type { ResizableOptions, ResizeEdge } from './actions/resizable.js';
 export type { ContextMenuItem } from './components/ContextMenu.svelte';
 export type { StartMenuItem } from './components/StartMenu.svelte';
 export type { MenuDef, MenuItemDef } from './components/MenuBar.svelte';

@@ -26,6 +26,7 @@
 	class:win98={theme.version === 'win98'}
 	class:xp={theme.version === 'xp'}
 	class:vista={theme.version === 'vista'}
+	ondblclick={onmaximize}
 >
 	{#if icon}
 		<span class="title-icon">{icon}</span>

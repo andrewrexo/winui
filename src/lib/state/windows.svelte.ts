@@ -194,6 +194,22 @@ class WindowManager {
 			win.y = y;
 		}
 	}
+
+	/** Updates a window's size and optionally position (called during resize) */
+	resize(id: string, x: number, y: number, width: number, height: number): void {
+		const win = this.windows.find((w) => w.id === id);
+		if (win) {
+			win.x = x;
+			win.y = y;
+			win.width = Math.max(200, width);
+			win.height = Math.max(100, height);
+		}
+	}
+
+	/** Close the currently active window */
+	closeActive(): void {
+		if (this.activeId) this.close(this.activeId);
+	}
 }
 
 export const wm = new WindowManager();

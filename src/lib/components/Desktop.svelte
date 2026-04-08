@@ -277,12 +277,8 @@
 	}
 
 	.icon-grid {
-		padding: 12px;
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		align-content: flex-start;
-		gap: 8px;
+		position: relative;
+		width: 100%;
 		height: 100%;
 	}
 

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import ContextMenu from './ContextMenu.svelte';
+	import type { ContextMenuItem } from './ContextMenu.svelte';
 	import { wm } from '../state/windows.svelte.js';
 	import { taskbar } from '../state/taskbar.svelte.js';
 	import { theme } from '../state/theme.svelte.js';
@@ -13,6 +15,25 @@
 	let clock = $state('');
 	let dateString = $state('');
 	let showCalendar = $state(false);
+
+	// Taskbar item right-click menu
+	let itemCtxMenu = $state<{ x: number; y: number; items: ContextMenuItem[] } | null>(null);
+
+	function handleItemContextMenu(e: MouseEvent, windowId: string) {
+		e.preventDefault();
+		e.stopPropagation();
+		itemCtxMenu = {
+			x: e.clientX,
+			y: e.clientY - 120, // position above the taskbar
+			items: [
+				{ label: 'Restore', action: () => { const w = wm.windows.find(w => w.id === windowId); if (w) { w.minimized = false; wm.activate(windowId); } } },
+				{ label: 'Minimize', action: () => wm.minimize(windowId) },
+				{ label: 'Maximize', action: () => wm.toggleMaximize(windowId) },
+				{ label: '', separator: true },
+				{ label: 'Close', action: () => wm.close(windowId) },
+			]
+		};
+	}
 
 	const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -69,6 +90,8 @@
 				class="taskbar-item"
 				class:active={item.active}
 				onclick={() => wm.taskbarClick(item.id)}
+				oncontextmenu={(e) => handleItemContextMenu(e, item.id)}
+				title={item.title}
 			>
 				<span class="item-icon">{item.icon}</span>
 				<span class="item-title">{item.title}</span>
@@ -90,6 +113,16 @@
 			</div>
 		{/if}
 	</div>
+
+	<!-- Taskbar item right-click menu -->
+	{#if itemCtxMenu}
+		<ContextMenu
+			items={itemCtxMenu.items}
+			x={itemCtxMenu.x}
+			y={itemCtxMenu.y}
+			onclose={() => { itemCtxMenu = null; }}
+		/>
+	{/if}
 </div>
 
 <style>

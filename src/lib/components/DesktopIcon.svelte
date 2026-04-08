@@ -1,15 +1,11 @@
 <script lang="ts">
 	interface Props {
-		/** Icon label displayed below the image */
 		label: string;
-		/** Emoji or icon identifier */
 		icon: string;
-		/** Whether this icon is currently selected */
 		selected?: boolean;
-		/** Called on single click */
 		onclick?: (e: MouseEvent) => void;
-		/** Called on double-click (typically opens the app) */
 		ondblclick?: (e: MouseEvent) => void;
+		oncontextmenu?: (e: MouseEvent) => void;
 	}
 
 	let {
@@ -17,7 +13,8 @@
 		icon,
 		selected = false,
 		onclick,
-		ondblclick
+		ondblclick,
+		oncontextmenu
 	}: Props = $props();
 
 	function handleClick(e: MouseEvent) {
@@ -29,6 +26,12 @@
 		e.stopPropagation();
 		ondblclick?.(e);
 	}
+
+	function handleContextMenu(e: MouseEvent) {
+		e.preventDefault();
+		e.stopPropagation();
+		oncontextmenu?.(e);
+	}
 </script>
 
 <button
@@ -36,6 +39,7 @@
 	class:selected
 	onclick={handleClick}
 	ondblclick={handleDblClick}
+	oncontextmenu={handleContextMenu}
 	aria-label={label}
 >
 	<span class="icon-img">{icon}</span>

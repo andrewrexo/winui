@@ -12,12 +12,14 @@ export { default as TextInput } from './components/TextInput.svelte';
 export { default as MenuBar } from './components/MenuBar.svelte';
 export { default as Toolbar } from './components/Toolbar.svelte';
 export { default as AddressBar } from './components/AddressBar.svelte';
+export { default as NotificationBalloon } from './components/NotificationBalloon.svelte';
 
 // State
 export { wm } from './state/windows.svelte.js';
 export { theme } from './state/theme.svelte.js';
 export { taskbar } from './state/taskbar.svelte.js';
 export { desktop } from './state/desktop.svelte.js';
+export { notifications } from './state/notifications.svelte.js';
 
 // Actions
 export { draggable } from './actions/draggable.js';
@@ -34,3 +36,4 @@ export type { ContextMenuItem } from './components/ContextMenu.svelte';
 export type { StartMenuItem } from './components/StartMenu.svelte';
 export type { MenuDef, MenuItemDef } from './components/MenuBar.svelte';
 export type { ToolbarButton, ToolbarGroup } from './components/Toolbar.svelte';
+export type { Notification } from './state/notifications.svelte.js';

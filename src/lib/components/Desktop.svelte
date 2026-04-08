@@ -7,6 +7,8 @@
 	import { wm } from '../state/windows.svelte.js';
 	import { desktop } from '../state/desktop.svelte.js';
 	import { taskbar } from '../state/taskbar.svelte.js';
+	import { notifications } from '../state/notifications.svelte.js';
+	import NotificationBalloon from './NotificationBalloon.svelte';
 	import { theme } from '../state/theme.svelte.js';
 	import { THEME_CONFIGS } from '../themes/types.js';
 	import type { ThemeVersion } from '../themes/types.js';
@@ -238,6 +240,16 @@
 	/>
 
 	<Taskbar {tray} />
+
+	<!-- Notification Balloons -->
+	{#each notifications.notifications as notif (notif.id)}
+		<NotificationBalloon
+			title={notif.title}
+			message={notif.message}
+			icon={notif.icon}
+			onclose={() => notifications.dismiss(notif.id)}
+		/>
+	{/each}
 </div>
 
 <style>
@@ -334,5 +346,93 @@
 		color: #000;
 		border-top: 1px solid #d0cbb8;
 		padding-top: 6px;
+	}
+
+	/* ===== Themed Scrollbars (global, scoped by data-theme) ===== */
+
+	/* --- Windows XP scrollbars --- */
+	:global([data-theme='xp']) :global(::-webkit-scrollbar) {
+		width: 17px;
+		height: 17px;
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-track) {
+		background: #f1efe2;
+		border-left: 1px solid #d6d0c4;
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-thumb) {
+		background: linear-gradient(90deg, #ece9d8 0%, #d8d4c4 50%, #ece9d8 100%);
+		border: 1px solid #b0a890;
+		border-radius: 0;
+		min-height: 24px;
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-thumb:hover) {
+		background: linear-gradient(90deg, #e0ddd0 0%, #ccc8b8 50%, #e0ddd0 100%);
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-button) {
+		width: 17px;
+		height: 17px;
+		background: #ece9d8;
+		border: 1px solid #b0a890;
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-button:hover) {
+		background: #e0ddd0;
+	}
+	:global([data-theme='xp']) :global(::-webkit-scrollbar-corner) {
+		background: #ece9d8;
+	}
+
+	/* --- Windows 98 scrollbars --- */
+	:global([data-theme='win98']) :global(::-webkit-scrollbar) {
+		width: 16px;
+		height: 16px;
+	}
+	:global([data-theme='win98']) :global(::-webkit-scrollbar-track) {
+		background: repeating-conic-gradient(#c0c0c0 0% 25%, #ffffff 0% 50%) 50% / 2px 2px;
+	}
+	:global([data-theme='win98']) :global(::-webkit-scrollbar-thumb) {
+		background: #c0c0c0;
+		border-top: 1px solid #fff;
+		border-left: 1px solid #fff;
+		border-bottom: 1px solid #404040;
+		border-right: 1px solid #404040;
+	}
+	:global([data-theme='win98']) :global(::-webkit-scrollbar-button) {
+		width: 16px;
+		height: 16px;
+		background: #c0c0c0;
+		border-top: 1px solid #fff;
+		border-left: 1px solid #fff;
+		border-bottom: 1px solid #404040;
+		border-right: 1px solid #404040;
+	}
+	:global([data-theme='win98']) :global(::-webkit-scrollbar-corner) {
+		background: #c0c0c0;
+	}
+
+	/* --- Windows Vista scrollbars --- */
+	:global([data-theme='vista']) :global(::-webkit-scrollbar) {
+		width: 14px;
+		height: 14px;
+	}
+	:global([data-theme='vista']) :global(::-webkit-scrollbar-track) {
+		background: rgba(240, 242, 248, 0.6);
+	}
+	:global([data-theme='vista']) :global(::-webkit-scrollbar-thumb) {
+		background: rgba(160, 170, 195, 0.5);
+		border-radius: 7px;
+		border: 2px solid transparent;
+		background-clip: content-box;
+	}
+	:global([data-theme='vista']) :global(::-webkit-scrollbar-thumb:hover) {
+		background: rgba(120, 135, 165, 0.65);
+		border-radius: 7px;
+		border: 2px solid transparent;
+		background-clip: content-box;
+	}
+	:global([data-theme='vista']) :global(::-webkit-scrollbar-button) {
+		display: none;
+	}
+	:global([data-theme='vista']) :global(::-webkit-scrollbar-corner) {
+		background: rgba(240, 242, 248, 0.4);
 	}
 </style>

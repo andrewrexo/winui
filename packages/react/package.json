@@ -1,5 +1,5 @@
 {
-  "name": "@winui/react",
+  "name": "@drewrube/winui-react",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
@@ -16,7 +16,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@winui/themes": "workspace:*"
+    "@drewrube/winui-themes": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

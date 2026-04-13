@@ -9,7 +9,7 @@ import { desktop, useDesktop } from '../state/desktop';
 import { taskbar } from '../state/taskbar';
 import { notifications, useNotifications } from '../state/notifications';
 import { theme, useTheme } from '../state/theme';
-import { THEME_CONFIGS, type ThemeVersion } from '@winui/themes';
+import { THEME_CONFIGS, type ThemeVersion } from '@drewrube/winui-themes';
 import type { StartMenuItem } from './StartMenu';
 import type { ContextMenuItem } from './ContextMenu';
 

@@ -1,6 +1,6 @@
 {
-  "name": "winui",
-  "version": "0.1.0",
+  "name": "@drewrube/winui",
+  "version": "0.1.1",
   "description": "Windows-themed UI components for Svelte and React",
   "scripts": {
     "build": "pnpm -r run build",

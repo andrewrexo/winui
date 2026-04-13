@@ -1,5 +1,5 @@
 {
-  "name": "@winui/svelte",
+  "name": "@drewrube/winui-svelte",
   "version": "0.1.0",
   "type": "module",
   "svelte": "./src/lib/index.ts",
@@ -16,7 +16,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@winui/themes": "workspace:*"
+    "@drewrube/winui-themes": "workspace:*"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"

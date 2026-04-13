@@ -26,8 +26,8 @@ export { useDraggable } from './hooks/useDraggable';
 export { useResizable } from './hooks/useResizable';
 
 // Types
-export type { ThemeVersion, ThemeConfig } from '@winui/themes';
-export { THEME_CONFIGS } from '@winui/themes';
+export type { ThemeVersion, ThemeConfig } from '@drewrube/winui-themes';
+export { THEME_CONFIGS } from '@drewrube/winui-themes';
 export type { WindowState, WindowOpenConfig, TaskbarItemState } from './state/windows';
 export type { DesktopIconConfig } from './state/desktop';
 export type { DraggableOptions } from './hooks/useDraggable';

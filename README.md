@@ -4,9 +4,9 @@ Windows-themed UI components. Svelte 5 and React.
 
 Three packages:
 
-- `@winui/svelte` — 14 Svelte 5 components (Desktop, Window, Taskbar, StartMenu, etc.)
-- `@winui/react` — Same components, ported to React 18/19
-- `@winui/themes` — Shared CSS themes for Win98, XP, and Vista
+- `@drewrube/winui-svelte` — 14 Svelte 5 components (Desktop, Window, Taskbar, StartMenu, etc.)
+- `@drewrube/winui-react` — Same components, ported to React 18/19
+- `@drewrube/winui-themes` — Shared CSS themes for Win98, XP, and Vista
 
 ## Install
 
@@ -16,17 +16,17 @@ pnpm install
 
 ## Packages
 
-### @winui/svelte
+### @drewrube/winui-svelte
 
 ```bash
-npm install @winui/svelte
+npm install @drewrube/winui-svelte
 ```
 
 ```svelte
 <script>
-  import { Desktop, Window, Taskbar, StartMenu } from '@winui/svelte';
-  import { wm, theme } from '@winui/svelte';
-  import '@winui/themes/winxp.css';
+  import { Desktop, Window, Taskbar, StartMenu } from '@drewrube/winui-svelte';
+  import { wm, theme } from '@drewrube/winui-svelte';
+  import '@drewrube/winui-themes/winxp.css';
 </script>
 
 <div data-theme={theme.version}>
@@ -39,17 +39,17 @@ npm install @winui/svelte
 </div>
 ```
 
-### @winui/react
+### @drewrube/winui-react
 
 ```bash
-npm install @winui/react
+npm install @drewrube/winui-react
 ```
 
 ```tsx
-import { Desktop, Window, Taskbar } from '@winui/react';
-import { useWindowManager, useTheme } from '@winui/react';
-import '@winui/themes/winxp.css';
-import '@winui/react/styles.css';
+import { Desktop, Window, Taskbar } from '@drewrube/winui-react';
+import { useWindowManager, useTheme } from '@drewrube/winui-react';
+import '@drewrube/winui-themes/winxp.css';
+import '@drewrube/winui-react/styles.css';
 
 function App() {
   const { theme } = useTheme();
@@ -66,7 +66,7 @@ function App() {
 }
 ```
 
-### @winui/themes
+### @drewrube/winui-themes
 
 Three themes, applied via `[data-theme]` attribute and CSS custom properties:
 
@@ -77,9 +77,9 @@ Three themes, applied via `[data-theme]` attribute and CSS custom properties:
 Import the CSS for whichever theme(s) you want:
 
 ```js
-import '@winui/themes/win98.css';
-import '@winui/themes/winxp.css';
-import '@winui/themes/vista.css';
+import '@drewrube/winui-themes/win98.css';
+import '@drewrube/winui-themes/winxp.css';
+import '@drewrube/winui-themes/vista.css';
 ```
 
 ## Components

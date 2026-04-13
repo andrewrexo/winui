@@ -1,4 +1,4 @@
-import { THEME_CONFIGS, type ThemeVersion, type ThemeConfig } from '@winui/themes';
+import { THEME_CONFIGS, type ThemeVersion, type ThemeConfig } from '@drewrube/winui-themes';
 
 class ThemeState {
 	version = $state<ThemeVersion>('xp');

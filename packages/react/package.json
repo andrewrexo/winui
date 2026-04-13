@@ -11,7 +11,9 @@
     },
     "./styles.css": "./src/styles.css"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "check": "tsc --noEmit"
   },
@@ -28,5 +30,12 @@
     "react-dom": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewrexo/winui.git"
+  },
+  "publishConfig": {
+    "@drewrube:registry": "https://npm.pkg.github.com"
   }
 }

@@ -1,6 +1,5 @@
 {
   "name": "winui",
-  "private": true,
   "version": "0.1.0",
   "description": "Windows-themed UI components for Svelte and React",
   "scripts": {

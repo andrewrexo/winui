@@ -1,20 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "types": ["svelte"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "outDir": "dist",
+    "rootDir": "src"
+  }
 }

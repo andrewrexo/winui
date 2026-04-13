@@ -26,8 +26,8 @@ export { draggable } from './actions/draggable.js';
 export { resizable } from './actions/resizable.js';
 
 // Types
-export type { ThemeVersion, ThemeConfig } from './themes/types.js';
-export { THEME_CONFIGS } from './themes/types.js';
+export type { ThemeVersion, ThemeConfig } from '@winui/themes';
+export { THEME_CONFIGS } from '@winui/themes';
 export type { WindowState, WindowOpenConfig, TaskbarItemState } from './state/windows.svelte.js';
 export type { DesktopIconConfig } from './state/desktop.svelte.js';
 export type { DraggableOptions } from './actions/draggable.js';

@@ -1,0 +1,17 @@
+{
+  "name": "@winui/themes",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./win98.css": "./src/win98.css",
+    "./winxp.css": "./src/winxp.css",
+    "./vista.css": "./src/vista.css"
+  },
+  "files": ["src"]
+}
